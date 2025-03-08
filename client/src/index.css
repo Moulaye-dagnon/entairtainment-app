@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@theme {
+  --default-font-family: "Outfit", sans-serif;
+  --default-font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  --default-font-variation-settings: "opsz" 32;
+  --font-Outfit: "Outfit";
+  --color-dark-blue: #10141e;
+  --color-greyish-Blue: #5a698f;
+  --color-semi-dark-blue: #161d2f;
+  --color-red: #fc4747;
+}
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("./font-family/Outfit-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./font-family/Outfit-Medium.ttf") format("truetype");
+}
+
+body {
+  background-color: #10141e;
+  font-size: 15px;
+  color: #fff;
+}
+.before-circle::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.thumbnailHover:hover {
+  border-radius: 8px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
