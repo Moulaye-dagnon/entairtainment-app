@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://entairtainment-app.onrender.com",
   withCredentials: true,
 });
 
@@ -16,9 +16,12 @@ api.interceptors.response.use(
       if (refreshtoken) {
         try {
           axios.defaults.withCredentials = true;
-          const data = await axios("http://localhost:3000/auth/refresh", {
-            refreshToken: refreshtoken,
-          });
+          const data = await axios(
+            "https://entairtainment-app.onrender.com/auth/refresh",
+            {
+              refreshToken: refreshtoken,
+            }
+          );
           return api(original);
         } catch (error) {
           localStorage.removeItem("refreshtoken");
