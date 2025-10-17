@@ -3,6 +3,7 @@
   --default-font-family: "Outfit", sans-serif;
   --default-font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   --default-font-variation-settings: "opsz" 32;
+  --breakpoint-xs: 21rem;
   --font-Outfit: "Outfit";
   --color-dark-blue: #10141e;
   --color-greyish-Blue: #5a698f;
@@ -25,9 +26,13 @@
 }
 
 body {
+  width: 100%;
   background-color: #10141e;
   font-size: 15px;
   color: #fff;
+  max-width: 1440px;
+  margin: 0 auto;
+  /* overflow-x: hidden; */
 }
 .before-circle::before {
   content: "";
@@ -36,18 +41,5 @@ body {
   height: 5px;
   background-color: white;
   border-radius: 50%;
-  margin-right: 8px;
-}
-.thumbnailHover:hover {
-  border-radius: 8px;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  margin-right: 5px;
 }

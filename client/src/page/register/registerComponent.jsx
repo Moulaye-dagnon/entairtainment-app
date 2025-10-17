@@ -3,6 +3,7 @@ import { InputComponent } from "../../Components/InputComponent/InputComponent";
 import { Link, useNavigate } from "react-router";
 import { Logo } from "../../Components/logoComponent/Logo";
 import axios from "axios";
+import { register } from "../../services/api.conf";
 export function RegisterComponent() {
   const navigate = useNavigate();
   const [valueInput, setValueInput] = useState({
@@ -17,30 +18,16 @@ export function RegisterComponent() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (valueInput.password) {
-      if (valueInput.password === valueInput.ConfirmPassword) {
-        try {
-          const response = await axios.post(
-            "http://localhost:3000/auth/register",
-            {
-              email: valueInput.email,
-              password: valueInput.password,
-            }
-          );
-          if (response) {
-            console.log(response);
-            navigate("/");
-          }
-        } catch (error) {
-          console.log("Error server", error);
-        }
-      } else {
-        console.log("Passwords different");
-      }
+    if (
+      valueInput.password &&
+      valueInput.password === valueInput.ConfirmPassword
+    ) {
+      register(valueInput.email, valueInput.password, navigate);
+
       setValueInput({
         email: "",
         password: "",
-        ConfirmPassword,
+        ConfirmPassword: "",
       });
     } else {
       setinputEmpty(true);

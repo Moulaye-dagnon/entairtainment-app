@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { InputComponent } from "../../Components/InputComponent/InputComponent";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Logo } from "../../Components/logoComponent/Logo";
 import axios from "axios";
+import { useAuthContext } from "../../utils/context";
+import { login } from "../../services/api.conf";
 
 export function LoginComponent() {
+  const navigate = useNavigate();
+  const { setAuthuser } = useAuthContext();
   const [valueInput, setValueInput] = useState({
     email: "",
     password: "",
@@ -19,18 +23,7 @@ export function LoginComponent() {
     e.preventDefault();
     if (valueInput.password) {
       setinputEmpty(false);
-
-      try {
-        const response = await axios.post("http://localhost:3000/auth/login", {
-          email: valueInput.email,
-          password: valueInput.password,
-        });
-        if (response) {
-          console.log(response);
-        }
-      } catch (error) {
-        console.log("Error server", error);
-      }
+      login(valueInput.email, valueInput.password, navigate, setAuthuser);
     } else {
       setinputEmpty(true);
     }

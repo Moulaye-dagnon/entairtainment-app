@@ -1,16 +1,31 @@
-import { SearchComponent } from "../../Components/SearchComponent/SearchComponent";
+import { useEffect, useState } from "react";
+import { CardOverviewComponent } from "../../Components/Card-overview/CardOverviewComponent";
 import { TrendingOverviewComponent } from "../../Components/Trending-overview/TrendingOverview";
-import { HeaderComponent } from "../../Components/headerComponent/headerComponent";
+import axios from "axios";
+import { useAuthContext } from "../../utils/context";
 
 export function HomeComponent() {
+  const [Data, setData] = useState(null);
+  const { Authuser } = useAuthContext();
+  useEffect(() => {
+    async function NoTrendingFech() {
+      try {
+        const response = await axios.get("http://localhost:3000/nottrending");
+        if (response.status == 200) {
+          setData(response.data.data);
+        }
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    NoTrendingFech();
+  }, []);
   return (
-    <div className="lg:flex lg:justify-between   lg:p-8  ">
-      <HeaderComponent />
-
-      <div className=" flex-auto mx-9">
-        <SearchComponent />
-		<TrendingOverviewComponent/>
-      </div>
+    <div className="w-full">
+      <TrendingOverviewComponent />
+      {Data && (
+        <CardOverviewComponent title={"Recommended for you"} Data={Data} />
+      )}
     </div>
   );
 }

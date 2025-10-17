@@ -1,9 +1,9 @@
 const route = require("express").Router();
 const Movie = require("../mongoose/models/movies");
 
-route.get("/movies", async (req, res) => {
+route.get("/notTrending", async (req, res) => {
   try {
-    const Data = await Movie.find({ category: "Movie" });
+    const Data = await Movie.find({ isTrending: false });
     if (Data) {
       return res.status(200).json({ data: Data });
     }
