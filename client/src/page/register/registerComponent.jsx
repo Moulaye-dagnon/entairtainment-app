@@ -2,7 +2,6 @@ import { useState } from "react";
 import { InputComponent } from "../../Components/InputComponent/InputComponent";
 import { Link, useNavigate } from "react-router";
 import { Logo } from "../../Components/logoComponent/Logo";
-import axios from "axios";
 import { register } from "../../services/api.conf";
 export function RegisterComponent() {
   const navigate = useNavigate();

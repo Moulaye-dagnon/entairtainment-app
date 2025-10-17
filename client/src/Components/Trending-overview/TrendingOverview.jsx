@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Scrollbar, A11y } from "swiper/modules";
-
+import { api } from "../../services/api.conf";
 import { TrendingCartComponent } from "../Trending-cart/Trending-Cart-component";
 export function TrendingOverviewComponent() {
   const [TrendingData, setTrendingData] = useState(null);
@@ -12,7 +11,7 @@ export function TrendingOverviewComponent() {
   useEffect(() => {
     async function TrendingFech() {
       try {
-        const response = await axios.get("http://localhost:3000/trending");
+        const response = await api.get("/trending");
         if (response.status == 200) {
           setTrendingData(response.data.data);
         }

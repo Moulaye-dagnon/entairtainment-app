@@ -1,8 +1,7 @@
 import icon_movie from "../../assets/icon-category-movie.svg";
 import icon_tv from "../../assets/icon-category-tv.svg";
 import icon_bookmark_empty from "../../assets/icon-bookmark-empty.svg";
-import icon_bookmark_full from "../../assets/icon-bookmark-full.svg";
-import icon_play from "../../assets/icon-play.svg";
+
 import { useEffect, useState } from "react";
 export function TrendingCartComponent({ item }) {
   const [backgroundImage, setBackgroundImage] = useState(

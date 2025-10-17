@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { CardOverviewComponent } from "../../Components/Card-overview/CardOverviewComponent";
 import { TrendingOverviewComponent } from "../../Components/Trending-overview/TrendingOverview";
-import axios from "axios";
-import { useAuthContext } from "../../utils/context";
+import { api } from "../../services/api.conf";
 
 export function HomeComponent() {
   const [Data, setData] = useState(null);
-  const { Authuser } = useAuthContext();
   useEffect(() => {
     async function NoTrendingFech() {
       try {
-        const response = await axios.get("http://localhost:3000/nottrending");
+        const response = await api.get("/nottrending");
         if (response.status == 200) {
           setData(response.data.data);
         }

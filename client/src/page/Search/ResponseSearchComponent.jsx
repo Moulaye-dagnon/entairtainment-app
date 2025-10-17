@@ -1,5 +1,5 @@
-import { useParams, useSearchParams } from "react-router-dom";
-import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+import { api } from "../../services/api.conf";
 import { useEffect, useState } from "react";
 import { CardOverviewComponent } from "../../Components/Card-overview/CardOverviewComponent";
 
@@ -11,9 +11,7 @@ export function ResponseSearchComponent() {
   useEffect(() => {
     async function FetchSearch() {
       try {
-        const response = await axios.post(
-          `http://localhost:3000/search/${search}`
-        );
+        const response = await api.post(`/search/${search}`);
         if (response.status === 200) {
           setData(response.data.data);
         }

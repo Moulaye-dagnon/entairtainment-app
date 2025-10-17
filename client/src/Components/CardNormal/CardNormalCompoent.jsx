@@ -6,6 +6,7 @@ import icon_play from "../../assets/icon-play.svg";
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../../utils/context";
 import axios from "axios";
+import { api } from "../../services/api.conf";
 export function CardNormalComponent({ item }) {
   const [backgroundImage, setBackgroundImage] = useState(
     item.thumbnail.regular.small
@@ -38,7 +39,7 @@ export function CardNormalComponent({ item }) {
   const handleBookmarksAdd = async () => {
     try {
       axios.defaults.withCredentials = true;
-      const response = await axios.post("http://localhost:3000/bookmarks", {
+      const response = await api.post("/bookmarks", {
         userID: Authuser.id,
         movieID: item._id,
         type: item.category,

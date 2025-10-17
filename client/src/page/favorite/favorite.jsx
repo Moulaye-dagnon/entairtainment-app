@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { CardOverviewComponent } from "../../Components/Card-overview/CardOverviewComponent";
-import axios from "axios";
 import { useBookmarks } from "../../Hook/useBookmarks";
 
 export function FavoriteComponent() {
