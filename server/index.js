@@ -21,7 +21,10 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5173"],
+    origin: [
+      "http://localhost:5173",
+      "https://entairtainment-app.onrender.com",
+    ],
   })
 );
 app.use(cookieParser());
